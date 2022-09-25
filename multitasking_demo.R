@@ -34,7 +34,4 @@ system.time({
   stopCluster(cl) # 关闭集群
 })
 
-
-
-
 df=as.data.frame(res.df)
