@@ -1,3 +1,6 @@
+## 查看系统平台
+Sys.info()['sysname']
+
 ## 一共多少核
 library(parallel)
 nCores <- detectCores()#一共多少核
@@ -7,13 +10,13 @@ nCores
 x <- iris[which(iris[,5] != "setosa"), c(1,5)]
 trials <- seq(1, 10000)
 boot_fx <- function(trial) {
-  ind <- sample(100, 100, replace=TRUE)
+  ind <- sample(100, 100, replace=TRUE)#从0-100里抽出100个序号index
   result1 <- glm(x[ind,2]~x[ind,1], family=binomial(logit))
   r <- coefficients(result1)
   res <- rbind(data.frame(), r)
 }
 system.time({
-  results <- lapply(trials, boot_fx)
+  results <- lapply(trials, boot_fx)#trials每一次跑boot_fx的时候都会记录在resluts里面
 })
 
 ## mclapply
@@ -36,7 +39,7 @@ system.time({
 x <- iris[which(iris[,5] != "setosa"), c(1,5)]
 trials <- seq(1, 10000)
 cl <- makeCluster(nCores, type = 'SOCK')
-clusterExport(cl, "x")#加上这行
+clusterExport(cl, "x")#加上这行,绑定识别
 system.time(results <- parLapply(cl, trials, boot_fx))
 stopCluster(cl)
 
