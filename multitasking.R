@@ -45,7 +45,7 @@ stopCluster(cl)
 
 
 ## Almost any OS
-# On Windows (and most OS), + + .snow doParallel foreach
+# On Windows (and most OS),  snow doParallel foreach
 library(doParallel)
 cl <- makeCluster(nCores, type = 'SOCK')#建立并行
 registerDoParallel(cl)
