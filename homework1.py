@@ -17,5 +17,3 @@ if __name__ == '__main__':
     eat_process.start()
     drink_process.start()
 
-
-
